@@ -1,0 +1,38 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the paper below."
+title: "cold-start-leakage: companion code for Cold-Start Attack"
+abstract: >-
+  Simulation framework measuring how much of a private account's social
+  neighbourhood a cold-start observer can recover from ordinary top-k
+  recommendations, and evaluating candidate defences against static and
+  adaptive attackers.
+authors:
+  - family-names: "Kucuk"
+    given-names: "Duzgun"
+  - family-names: "Kutsal"
+    given-names: "Mucahit"
+  - family-names: "Ertam"
+    given-names: "Fatih"
+license: MIT
+repository-code: "https://github.com/McahitKutsal/cold-start-leakage"
+keywords:
+  - recommender systems
+  - graph neural networks
+  - privacy
+  - social graph
+  - cold start
+preferred-citation:
+  type: article
+  title: >-
+    Cold-Start Attack: A Simulation Study of Social Graph Leakage in
+    Recommender Systems
+  authors:
+    - family-names: "Kucuk"
+      given-names: "Duzgun"
+    - family-names: "Kutsal"
+      given-names: "Mucahit"
+    - family-names: "Ertam"
+      given-names: "Fatih"
+  journal: "Computers & Security"
+  year: 2026
+  notes: "Under review"
