@@ -131,8 +131,8 @@ made to identify any individual, and no data beyond the public SNAP releases is 
 @article{kucuk2026coldstart,
   title   = {Cold-Start Attack: A Simulation Study of Social Graph Leakage in
              Recommender Systems},
-  author  = {Duzgun Kucuk, Mucahit Kutsal, Fatih Ertam},
-  journal = {Computers & Security},
+  author  = {K\"u\c{c}\"uk, D\"uzg\"un and Kutsal, M\"ucahit and Ertam, Fatih},
+  journal = {Computers \& Security},
   year    = {2026},
   note    = {Under review}
 }
