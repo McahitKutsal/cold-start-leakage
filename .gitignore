@@ -1,0 +1,17 @@
+# Generated data, trained models and sweep outputs.
+# Every artefact under this directory is reproducible by running the notebooks
+# in order; the SNAP source archives are downloaded by notebook 01 rather than
+# redistributed here.
+cold_start_leakage/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db

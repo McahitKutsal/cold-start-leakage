@@ -1,0 +1,10 @@
+# Verified against the versions below on CPU (Linux, Python 3.11).
+# Any reasonably recent release of each should work; the pins record what was
+# actually exercised when the reported numbers were reproduced.
+networkx>=3.0        # verified 3.6.1
+numpy>=1.24          # verified 2.4.6
+pandas>=2.0          # verified 3.0.5
+scipy>=1.10          # verified 1.17.1
+torch>=2.0           # verified 2.13.0  (CPU build is sufficient)
+matplotlib>=3.7      # verified 3.11.1
+scikit-learn>=1.2    # used only for the ROC-AUC helper in notebooks 01, 02, 04, 05
