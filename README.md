@@ -1,4 +1,4 @@
-# cold-start-leakage
+# Cold-Start Leakage
 
 Companion code for:
 
