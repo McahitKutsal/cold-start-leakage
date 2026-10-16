@@ -57,7 +57,9 @@ Cold versus warm precision and recall with bootstrap confidence intervals and th
 Wilcoxon test; random, popularity and same-community baselines; observer-history
 dose-response; structural versus feature-fused ablation; depth-2 precision;
 confirmed-relation type mix; verifiable (public-only) leakage; real-topology
-replication on the three public datasets. Figs. 3 and 4 are written to
+replication on the three public datasets; a parameter-free baseline that ranks
+candidates by the cosine similarity of their neighbour sets, with the average
+clustering coefficient of each graph (Section 5.6). Figs. 3 and 4 are written to
 `cold_start_leakage/figures/` (`fig_dose.pdf`, `fig_baselines.pdf`).
 
 ### `05_static_defenses.ipynb`
@@ -67,8 +69,10 @@ replication on the three public datasets. Figs. 3 and 4 are written to
 **Figures:** 8
 
 Output noise, temperature-based candidate pool and diversification against a static
-attacker (privacy-utility trade-off), the calibrated Gaussian mechanism over a range of
-privacy budgets, and the rank-only multi-query aggregation against output noise. The two
+attacker (privacy-utility trade-off), the calibrated Gaussian mechanism and the
+differentially private top-k selection (one-shot Gumbel mechanism) over a range of
+privacy budgets, and the rank-only (Borda) multi-query aggregation against output noise
+on all private targets. The two
 panels of Fig. 8 are written to `cold_start_leakage/figures/fig_defenses.pdf`.
 
 ### `06_adaptive_attacker.ipynb`
@@ -77,19 +81,23 @@ panels of Fig. 8 are written to `cold_start_leakage/figures/fig_defenses.pdf`.
 **Tables:** 7, 8, B.3
 **Figures:** none
 
-Every defence re-evaluated against an adaptive attacker (score averaging, appearance
-counting, list expansion), the adaptivity gap, the noise-by-query-limit grid and the
-zCDP accounting of repeated Gaussian releases.
+Every defence re-evaluated against adaptive attackers: a rank-only attacker that
+aggregates the lists with a Borda count, and stronger attackers that average noisy
+scores or re-rank an expanded list by relevance (upper bounds). Also the adaptivity
+gap, the noise-by-query-limit grid and the zCDP accounting of repeated Gaussian
+releases. Node features are drawn before privacy labels, as in notebook 03.
 
 ### `07_inductive_utility.ipynb`
 
 **Paper sections:** 5.8
-**Tables:** B.2
+**Tables:** B.2, B.4
 **Figures:** data for 7 (drawn by notebook 08)
 
 Train-only (held-out-edge) evaluation for LightGCN, FeatureGNN and MF-BPR: AUC on
 training and held-out edges, held-out recall and NDCG, and cold-start leakage on the
-same model, split into training and held-out neighbours.
+same model, split into training and held-out neighbours. Section 7 of the notebook
+sweeps the weight decay and the training length for LightGCN and MF-BPR
+(`inductive/regularization_long.csv`, Table B.4).
 
 ### `08_paper_figures.ipynb`
 
@@ -108,13 +116,14 @@ Draws Figs. 5-7 from `sweeps/results_long.csv` and `inductive/inductive_long.csv
 | 3 | `04_attacker_metrics.ipynb` | Cold-start versus warm leakage, Configuration A |
 | 4 | `03_multiseed_and_sweeps.ipynb` | Leakage across architectures and graph sizes, Configurations B and C |
 | 5 | `04_attacker_metrics.ipynb` (models from `02`) | Leakage on the public datasets |
-| 6 | `05_static_defenses.ipynb` | Calibrated Gaussian mechanism: leakage and utility versus privacy budget |
+| 6 | `05_static_defenses.ipynb` | Gaussian mechanism and differentially private top-k selection: leakage and utility versus privacy budget |
 | 7 | `06_adaptive_attacker.ipynb` | Static and adaptive attackers at the nominal operating points |
 | 8 | `06_adaptive_attacker.ipynb` | Adaptive leakage under output noise and a query limit |
 | A.1 | this document | Notebook-to-paper mapping |
 | B.1 | `03_multiseed_and_sweeps.ipynb` | Scoring-rule sensitivity |
 | B.2 | `07_inductive_utility.ipynb` | Held-out-edge evaluation |
 | B.3 | `06_adaptive_attacker.ipynb` | Cumulative privacy budget and adaptive leakage of the Gaussian mechanism |
+| B.4 | `07_inductive_utility.ipynb` | Regularization and training length for the train-only models |
 
 ## By figure
 

@@ -76,10 +76,10 @@ refer to the current version of the paper.
 | `01_graphs_and_features.ipynb` | SBM and LFR generators of Configuration A, SNAP loaders (ego-Facebook, Twitter-ego BFS sample, email-Eu-core), privacy labels, node features, ground-truth `N(t)` | Section 4.2 |
 | `02_recommender_training.ipynb` | LightGCN and FeatureGNN training (BPR) for Configuration A and the three public datasets, link-prediction AUC; ego-Facebook is trained in its own re-seeded cell | Sections 4.3, 5.1 |
 | `03_multiseed_and_sweeps.ipynb` | Configuration B: ten-seed bands for LightGCN, FeatureGNN and MF-BPR, one-factor-at-a-time sweeps, scoring-rule variants (warm-path and cold-path); Configuration C: n=15,000 scale test | Sections 5.5, 5.7; Table 4, Table B.1 |
-| `04_attacker_metrics.ipynb` | Cold versus warm precision and recall, baselines, dose-response, structural versus feature-fused ablation, depth-2 precision, relation mix, verifiable (public-only) leakage, warm confidence intervals, real-topology replication | Sections 5.2-5.4, 5.6; Tables 3, 5; Figs. 3, 4 |
-| `05_static_defenses.ipynb` | Output noise, temperature-based candidate pool, diversification and the calibrated Gaussian mechanism against a static attacker; rank-only multi-query aggregation | Sections 5.9, 5.10; Table 6; Fig. 8 |
-| `06_adaptive_attacker.ipynb` | Every defence against an adaptive attacker, the adaptivity gap, the rate-limit grid, zCDP accounting of repeated Gaussian releases | Section 5.10; Tables 7, 8, B.3 |
-| `07_inductive_utility.ipynb` | Train-only (held-out-edge) evaluation for LightGCN, FeatureGNN and MF-BPR, and the split of leakage into training and held-out neighbours | Section 5.8; Table B.2 |
+| `04_attacker_metrics.ipynb` | Cold versus warm precision and recall, baselines, dose-response, structural versus feature-fused ablation, depth-2 precision, relation mix, verifiable (public-only) leakage, warm confidence intervals, real-topology replication, parameter-free shared-neighbour baseline | Sections 5.2-5.4, 5.6; Tables 3, 5; Figs. 3, 4 |
+| `05_static_defenses.ipynb` | Output noise, temperature-based candidate pool, diversification, the calibrated Gaussian mechanism and differentially private top-k selection against a static attacker; rank-only (Borda) multi-query aggregation | Sections 5.9, 5.10; Table 6; Fig. 8 |
+| `06_adaptive_attacker.ipynb` | Every defence against a rank-only (Borda) attacker and against a score-averaging or re-ranking attacker, the adaptivity gap, the rate-limit grid, zCDP accounting of repeated Gaussian releases | Section 5.10; Tables 7, 8, B.3 |
+| `07_inductive_utility.ipynb` | Train-only (held-out-edge) evaluation for LightGCN, FeatureGNN and MF-BPR, the split of leakage into training and held-out neighbours, and a weight-decay and training-length sweep | Section 5.8; Tables B.2, B.4 |
 | `08_paper_figures.ipynb` | Paper Figs. 5-7 drawn from the CSV outputs of notebooks 03 and 07 | Figs. 5, 6, 7 |
 
 `docs/notebook_to_paper_map.md` gives the full table-by-table and figure-by-figure
@@ -115,9 +115,14 @@ mapping, including which figures are schematics rather than computed output.
   in the third decimal across hardware and thread settings, because multi-threaded
   floating-point sums are not deterministic.
 - `sweeps/results_long.csv`, `sweeps/results_large_scale.csv`,
-  `adaptive/adaptive_long.csv` and `inductive/inductive_long.csv` are the long-format
-  sources behind the paper's result tables. Re-running notebook 06 reproduces Tables 7,
-  8 and B.3 of the paper.
+  `adaptive/adaptive_long.csv`, `inductive/inductive_long.csv` and
+  `inductive/regularization_long.csv` are the long-format sources behind the paper's
+  result tables. Re-running notebook 06 reproduces Tables 7, 8 and B.3 of the paper.
+- Multi-seed results are reported as mean +- the half-width of a 95% confidence interval
+  based on the t distribution (m - 1 degrees of freedom for m seeds).
+- Notebook 06 draws node features before privacy labels, like notebook 03, so its
+  undefended leakage equals the Configuration B values of Table 4. Notebook 07 draws
+  the labels first, so its private targets differ from those of notebook 03.
 - The n=15,000 scale test (last cell of notebook 03) builds the normalized adjacency
   as a sparse tensor (`norm_adj_sparse`). The values are identical to the dense matrix
   used for the 700-node graphs; only the summation order differs. With the dense matrix,
