@@ -22,7 +22,7 @@ keywords:
   - social graph
   - cold start
 preferred-citation:
-  type: article
+  type: unpublished
   title: >-
     Cold-Start Attack: A Simulation Study of Social Graph Leakage in
     Recommender Systems
@@ -33,6 +33,5 @@ preferred-citation:
       given-names: "Mucahit"
     - family-names: "Ertam"
       given-names: "Fatih"
-  journal: "Computers & Security"
   year: 2026
-  notes: "Under review"
+  notes: "Manuscript under review"
